@@ -1,0 +1,33 @@
+{
+  "name": "consistent-hash-ring",
+  "version": "1.0.0",
+  "description": "Deterministic consistent hashing ring with virtual nodes and interactive CLI in TypeScript",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "consistent-hash-ring": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "tsx src/index.ts",
+    "cli": "tsx src/index.ts",
+    "demo": "tsx src/index.ts --demo",
+    "test": "tsx src/test/run-tests.ts && tsx src/test/cli.test.ts",
+    "lint": "tsc --noEmit"
+  },
+  "keywords": [
+    "consistent-hashing",
+    "distributed-systems",
+    "virtual-nodes",
+    "hash-ring",
+    "cli",
+    "typescript"
+  ],
+  "author": "Yuvraj Singh (https://github.com/YuvvrajSingh)",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}

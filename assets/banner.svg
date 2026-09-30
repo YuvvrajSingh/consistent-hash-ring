@@ -1,0 +1,171 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 400" width="100%" height="auto">
+  <defs>
+    <!-- Background Grid -->
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#18181b" stroke-width="1"/>
+    </pattern>
+
+    <!-- Subtle Radial Glow for Ring -->
+    <radialGradient id="ringGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00F0FF" stop-opacity="0.09"/>
+      <stop offset="50%" stop-color="#818CF8" stop-opacity="0.05"/>
+      <stop offset="85%" stop-color="#10B981" stop-opacity="0.02"/>
+      <stop offset="100%" stop-color="#09090b" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Linear Gradient for Title -->
+    <linearGradient id="titleGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="70%" stop-color="#e4e4e7"/>
+      <stop offset="100%" stop-color="#a1a1aa"/>
+    </linearGradient>
+
+    <!-- Arrow Marker -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#71717a"/>
+    </marker>
+  </defs>
+
+  <!-- Canvas Background -->
+  <rect width="1280" height="400" fill="#09090b"/>
+  <rect width="1280" height="400" fill="url(#grid)"/>
+  <rect width="1280" height="400" fill="none" stroke="#27272a" stroke-width="1"/>
+
+  <!-- ================= LEFT SECTION: HERO & SPECIFICATION ================= -->
+  <!-- Status Badge -->
+  <g transform="translate(80, 48)">
+    <rect width="248" height="28" rx="14" fill="#121215" stroke="#27272a" stroke-width="1"/>
+    <circle cx="14" cy="14" r="4" fill="#00F0FF"/>
+    <text x="26" y="18" font-family="'Geist Mono', 'SF Mono', 'JetBrains Mono', Menlo, monospace" font-size="11" font-weight="600" fill="#a1a1aa" letter-spacing="0.06em">DISTRIBUTED TOPOLOGY · v1.0.0</text>
+  </g>
+
+  <!-- Title & Subtitle -->
+  <text x="80" y="128" font-family="'Geist Mono', 'SF Mono', 'JetBrains Mono', Menlo, monospace" font-size="36" font-weight="700" fill="url(#titleGradient)" letter-spacing="-0.03em">consistent-hash-ring</text>
+  <text x="80" y="164" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Geist', 'Inter', Roboto, sans-serif" font-size="15" fill="#a1a1aa">Deterministic 32-bit token ring with virtual nodes &amp; minimal churn</text>
+
+  <!-- Spec Cards Row -->
+  <!-- Card 1: Token Space -->
+  <g transform="translate(80, 202)">
+    <rect width="164" height="68" rx="8" fill="#111216" stroke="#27272a" stroke-width="1"/>
+    <text x="16" y="24" font-family="'Geist Mono', 'SF Mono', 'JetBrains Mono', Menlo, monospace" font-size="10" font-weight="600" fill="#71717a" letter-spacing="0.08em">TOKEN SPACE</text>
+    <text x="16" y="46" font-family="'Geist Mono', 'SF Mono', 'JetBrains Mono', Menlo, monospace" font-size="14" font-weight="700" fill="#f4f4f5">0 .. 2&#179;&#178; - 1</text>
+    <text x="16" y="59" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10" fill="#00F0FF">32-bit unsigned uint32</text>
+  </g>
+
+  <!-- Card 2: Lookup Complexity -->
+  <g transform="translate(256, 202)">
+    <rect width="164" height="68" rx="8" fill="#111216" stroke="#27272a" stroke-width="1"/>
+    <text x="16" y="24" font-family="'Geist Mono', 'SF Mono', 'JetBrains Mono', Menlo, monospace" font-size="10" font-weight="600" fill="#71717a" letter-spacing="0.08em">LOOKUP COST</text>
+    <text x="16" y="46" font-family="'Geist Mono', 'SF Mono', 'JetBrains Mono', Menlo, monospace" font-size="14" font-weight="700" fill="#f4f4f5">O(log(N &#183; V))</text>
+    <text x="16" y="59" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10" fill="#818CF8">binary search on ring</text>
+  </g>
+
+  <!-- Card 3: Minimal Churn -->
+  <g transform="translate(432, 202)">
+    <rect width="164" height="68" rx="8" fill="#111216" stroke="#27272a" stroke-width="1"/>
+    <text x="16" y="24" font-family="'Geist Mono', 'SF Mono', 'JetBrains Mono', Menlo, monospace" font-size="10" font-weight="600" fill="#71717a" letter-spacing="0.08em">MIGRATION BOUND</text>
+    <text x="16" y="46" font-family="'Geist Mono', 'SF Mono', 'JetBrains Mono', Menlo, monospace" font-size="14" font-weight="700" fill="#f4f4f5">K / (N + 1)</text>
+    <text x="16" y="59" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10" fill="#10B981">minimal cache churn</text>
+  </g>
+
+  <!-- Server Legend Bar -->
+  <g transform="translate(80, 310)">
+    <rect width="516" height="44" rx="8" fill="#0d0e12" stroke="#222328" stroke-width="1"/>
+    
+    <!-- Server Alpha -->
+    <circle cx="24" cy="22" r="5" fill="#00F0FF"/>
+    <text x="36" y="26" font-family="'Geist Mono', 'SF Mono', 'JetBrains Mono', Menlo, monospace" font-size="12" font-weight="600" fill="#e4e4e7">alpha</text>
+    <text x="82" y="26" font-family="'Geist Mono', 'SF Mono', monospace" font-size="11" fill="#71717a">100 vn</text>
+
+    <!-- Separator -->
+    <line x1="145" y1="14" x2="145" y2="30" stroke="#27272a" stroke-width="1"/>
+
+    <!-- Server Beta -->
+    <circle cx="170" cy="22" r="5" fill="#818CF8"/>
+    <text x="182" y="26" font-family="'Geist Mono', 'SF Mono', 'JetBrains Mono', Menlo, monospace" font-size="12" font-weight="600" fill="#e4e4e7">beta</text>
+    <text x="222" y="26" font-family="'Geist Mono', 'SF Mono', monospace" font-size="11" fill="#71717a">100 vn</text>
+
+    <!-- Separator -->
+    <line x1="285" y1="14" x2="285" y2="30" stroke="#27272a" stroke-width="1"/>
+
+    <!-- Server Gamma -->
+    <circle cx="310" cy="22" r="5" fill="#10B981"/>
+    <text x="322" y="26" font-family="'Geist Mono', 'SF Mono', 'JetBrains Mono', Menlo, monospace" font-size="12" font-weight="600" fill="#e4e4e7">gamma</text>
+    <text x="370" y="26" font-family="'Geist Mono', 'SF Mono', monospace" font-size="11" fill="#71717a">100 vn</text>
+
+    <!-- Separator -->
+    <line x1="435" y1="14" x2="435" y2="30" stroke="#27272a" stroke-width="1"/>
+
+    <!-- Status -->
+    <text x="452" y="26" font-family="'Geist Mono', 'SF Mono', monospace" font-size="11" fill="#10B981">BALANCED</text>
+  </g>
+
+  <!-- ================= RIGHT SECTION: RING TOPOLOGY DIAGRAM ================= -->
+  <!-- Glow layer behind ring -->
+  <circle cx="960" cy="200" r="170" fill="url(#ringGlow)"/>
+  <!-- Outer orbit dashed ring -->
+  <circle cx="960" cy="200" r="148" fill="none" stroke="#222328" stroke-width="1" stroke-dasharray="3 5"/>
+  <!-- Main perimeter ring -->
+  <circle cx="960" cy="200" r="125" fill="#0c0d12" stroke="#27272a" stroke-width="2"/>
+  <!-- Inner guide ring -->
+  <circle cx="960" cy="200" r="82" fill="none" stroke="#1c1d22" stroke-width="1"/>
+  <!-- Center hub -->
+  <circle cx="960" cy="200" r="44" fill="#121318" stroke="#27272a" stroke-width="1.5"/>
+  <text x="960" y="196" text-anchor="middle" font-family="'Geist Mono', 'SF Mono', Menlo, monospace" font-size="11" font-weight="700" fill="#f4f4f5" letter-spacing="0.08em">RING</text>
+  <text x="960" y="212" text-anchor="middle" font-family="'Geist Mono', 'SF Mono', Menlo, monospace" font-size="9" fill="#71717a">32-BIT uint32</text>
+  <line x1="960" y1="75" x2="960" y2="83" stroke="#52525b" stroke-width="1.5"/>
+  <text x="960" y="63" text-anchor="middle" font-family="'Geist Mono', 'SF Mono', monospace" font-size="9.5" fill="#71717a">0x00000000</text>
+  <line x1="1085" y1="200" x2="1077" y2="200" stroke="#52525b" stroke-width="1.5"/>
+  <text x="1099" y="204" text-anchor="start" font-family="'Geist Mono', 'SF Mono', monospace" font-size="9.5" fill="#71717a">0x40000000</text>
+  <line x1="960" y1="325" x2="960" y2="317" stroke="#52525b" stroke-width="1.5"/>
+  <text x="960" y="345" text-anchor="middle" font-family="'Geist Mono', 'SF Mono', monospace" font-size="9.5" fill="#71717a">0x80000000</text>
+  <line x1="835" y1="200" x2="843" y2="200" stroke="#52525b" stroke-width="1.5"/>
+  <text x="821" y="204" text-anchor="end" font-family="'Geist Mono', 'SF Mono', monospace" font-size="9.5" fill="#71717a">0xC0000000</text>
+  <line x1="985.3" y1="122.0" x2="998.6" y2="81.1" stroke="#1c1d22" stroke-width="1"/>
+  <line x1="1032.4" y1="161.5" x2="1070.4" y2="141.3" stroke="#1c1d22" stroke-width="1"/>
+  <line x1="1022.8" y1="252.7" x2="1055.8" y2="280.3" stroke="#1c1d22" stroke-width="1"/>
+  <line x1="943.0" y1="280.2" x2="934.0" y2="322.3" stroke="#1c1d22" stroke-width="1"/>
+  <line x1="880.8" y1="221.2" x2="839.3" y2="232.4" stroke="#1c1d22" stroke-width="1"/>
+  <line x1="905.1" y1="139.1" x2="876.4" y2="107.1" stroke="#1c1d22" stroke-width="1"/>
+  <line x1="1008.2" y1="133.7" x2="1033.5" y2="98.9" stroke="#1c1d22" stroke-width="1"/>
+  <line x1="1041.6" y1="208.6" x2="1084.3" y2="213.1" stroke="#1c1d22" stroke-width="1"/>
+  <line x1="990.7" y1="276.0" x2="1006.8" y2="315.9" stroke="#1c1d22" stroke-width="1"/>
+  <line x1="905.1" y1="260.9" x2="876.4" y2="292.9" stroke="#1c1d22" stroke-width="1"/>
+  <line x1="879.8" y1="183.0" x2="837.7" y2="174.0" stroke="#1c1d22" stroke-width="1"/>
+  <line x1="929.3" y1="124.0" x2="913.2" y2="84.1" stroke="#1c1d22" stroke-width="1"/>
+  <line x1="1024.6" y1="149.5" x2="1058.5" y2="123.0" stroke="#1c1d22" stroke-width="1"/>
+  <line x1="1034.9" y1="233.4" x2="1074.2" y2="250.8" stroke="#1c1d22" stroke-width="1"/>
+  <line x1="965.7" y1="281.8" x2="968.7" y2="324.7" stroke="#1c1d22" stroke-width="1"/>
+  <line x1="889.0" y1="241.0" x2="851.7" y2="262.5" stroke="#1c1d22" stroke-width="1"/>
+  <line x1="887.6" y1="161.5" x2="849.6" y2="141.3" stroke="#1c1d22" stroke-width="1"/>
+  <line x1="951.4" y1="118.4" x2="946.9" y2="75.7" stroke="#1c1d22" stroke-width="1"/>
+  <circle cx="998.6" cy="81.1" r="4" fill="#00F0FF" stroke="#09090b" stroke-width="1.5"/>
+  <circle cx="1070.4" cy="141.3" r="4" fill="#00F0FF" stroke="#09090b" stroke-width="1.5"/>
+  <circle cx="1055.8" cy="280.3" r="4" fill="#00F0FF" stroke="#09090b" stroke-width="1.5"/>
+  <circle cx="934.0" cy="322.3" r="4" fill="#00F0FF" stroke="#09090b" stroke-width="1.5"/>
+  <circle cx="839.3" cy="232.4" r="4" fill="#00F0FF" stroke="#09090b" stroke-width="1.5"/>
+  <circle cx="876.4" cy="107.1" r="4" fill="#00F0FF" stroke="#09090b" stroke-width="1.5"/>
+  <circle cx="1033.5" cy="98.9" r="4" fill="#818CF8" stroke="#09090b" stroke-width="1.5"/>
+  <circle cx="1084.3" cy="213.1" r="4" fill="#818CF8" stroke="#09090b" stroke-width="1.5"/>
+  <circle cx="1006.8" cy="315.9" r="4" fill="#818CF8" stroke="#09090b" stroke-width="1.5"/>
+  <circle cx="876.4" cy="292.9" r="4" fill="#818CF8" stroke="#09090b" stroke-width="1.5"/>
+  <circle cx="837.7" cy="174.0" r="4" fill="#818CF8" stroke="#09090b" stroke-width="1.5"/>
+  <circle cx="913.2" cy="84.1" r="4" fill="#818CF8" stroke="#09090b" stroke-width="1.5"/>
+  <circle cx="1058.5" cy="123.0" r="4" fill="#10B981" stroke="#09090b" stroke-width="1.5"/>
+  <circle cx="1074.2" cy="250.8" r="4" fill="#10B981" stroke="#09090b" stroke-width="1.5"/>
+  <circle cx="968.7" cy="324.7" r="4" fill="#10B981" stroke="#09090b" stroke-width="1.5"/>
+  <circle cx="851.7" cy="262.5" r="4" fill="#10B981" stroke="#09090b" stroke-width="1.5"/>
+  <circle cx="849.6" cy="141.3" r="4" fill="#10B981" stroke="#09090b" stroke-width="1.5"/>
+  <circle cx="946.9" cy="75.7" r="4" fill="#10B981" stroke="#09090b" stroke-width="1.5"/>
+  <!-- Clockwise motion indicator -->
+  <path d="M 1020.2 64.8 A 148 148 0 0 1 1082.7 117.2" fill="none" stroke="#71717a" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="1092.7" y="111.2" font-family="'Geist Mono', monospace" font-size="9" fill="#a1a1aa">clockwise &#x21B7;</text>
+  <!-- Key resolution demonstration -->
+  <circle cx="1082.3" cy="174.0" r="3.5" fill="#ffffff" stroke="#f43f5e" stroke-width="1.5"/>
+  <path d="M 1082.3 174.0 A 125 125 0 0 1 1084.3 213.1" fill="none" stroke="#00F0FF" stroke-width="2.5" stroke-linecap="round"/>
+  <g transform="translate(1098.3, 150.0)">
+    <rect width="112" height="34" rx="6" fill="#18181b" stroke="#27272a" stroke-width="1"/>
+    <text x="8" y="15" font-family="'Geist Mono', 'SF Mono', monospace" font-size="9" fill="#f43f5e" font-weight="600">KEY: #4208</text>
+    <text x="8" y="27" font-family="'Geist Mono', 'SF Mono', monospace" font-size="8.5" fill="#71717a">&#x2192; resolves to beta</text>
+  </g>
+</svg>
